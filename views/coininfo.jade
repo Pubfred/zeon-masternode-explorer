@@ -1,0 +1,185 @@
+extends layout
+
+block content   
+  .col-md-12(style="margin-bottom: 4%")
+    .panel.panel-primary.coin-info
+      .panel-heading
+        strong #{settings.locale.coininfo_head}
+      .panel-body
+        .row
+          .col-md-3
+            .panel.panel-default
+              .panel-heading
+                strong #{settings.locale.coininfo_basicinfo}
+              .panel-body
+                each item in coininfo.basic_info_links
+                  a(href="#{item[1]}", target="_blank") #{item[0]}
+                  <br>
+         
+                
+          .col-md-9
+            .panel.panel-default
+              .panel-body.text-center
+                .row.info-row
+                  .col-md-4
+                    img(src='#{settings.logo}', style='')
+                  .col-md-4
+                    h2 #{settings.coin} &nbsp(#{settings.symbol})
+                    span #{lastPriceBtc} BTC
+                    if lastPriceUsd
+                      span  / $#{lastPriceUsd} &nbsp;
+                .row.info-row
+                  .col-md-4
+                    h4 #{marketCapUsd}
+                    h5.sub Market Cap (USD)
+                  .col-md-4
+                    h4 #{supply} #{settings.symbol}
+                    h5.sub Current Coin supply
+                  .col-md-4
+                    h4 #{coinsLocked}
+                    h5.sub Coins locked (#{coinsLockedPerc}%)
+                .row.text-left
+                    h4(style=" color: #66ccff") Level 1
+                .row.info-row
+                  .col-md-4
+                    h4 #{activeMasternodes1} / #{totalMasternodes1}
+                    h5.sub Active / Total nodes 
+                  .col-md-4
+                    h4 #{mnRequiredCoins1}
+                    h5.sub Required coins
+                  .col-md-4
+                    h4
+                      span #{nodeWorthBtc1} BTC
+                      if nodeWorthUsd
+                        span  / $#{nodeWorthUsd1}
+                    h5.sub Node worth
+ 
+                .row.text-left
+                    h4(style=" color: #0077b3") Level 2
+                .row.info-row
+                  .col-md-4
+                    h4 #{activeMasternodes2} / #{totalMasternodes2}
+                    h5.sub Active / Total nodes
+                  .col-md-4
+                    h4 #{mnRequiredCoins2}
+                    h5.sub Required coins
+                  .col-md-4
+                    h4
+                      span #{nodeWorthBtc2} BTC
+                      if nodeWorthUsd
+                        span  / $#{nodeWorthUsd2}
+                    h5.sub Node worth
+              
+                .row.text-left
+                    h4(style=" color: #00334d") Level 3
+                .row.info-row
+                  .col-md-4
+                    h4 #{activeMasternodes3} / #{totalMasternodes3}
+                    h5.sub Active / Total nodes
+                  .col-md-4
+                    h4 #{mnRequiredCoins3}
+                    h5.sub Required coins
+                  .col-md-4
+                    h4
+                      span #{nodeWorthBtc3} BTC
+                      if nodeWorthUsd
+                        span  / $#{nodeWorthUsd3}
+                    h5.sub Node worth
+                    
+
+    
+               
+
+                .row
+                  <hr>
+                .row.text-left
+                  .col-md-12
+                    h4(style=" color: #66ccff") Level1 Estimated earnings (Coin/BTC/USD)
+                .row.earnings
+                  .col-xs-2.col-md-offset-3.text-right
+                    div Daily
+                  .col-xs-10.col-md-7.text-left
+                    div #{dailyCoin1} #{settings.symbol} / #{dailyBtc} BTC / $#{dailyUsd}
+                .row.earnings
+                  .col-xs-2.col-md-offset-3.text-right
+                    div Weekly
+                  .col-xs-10.col-md-7.text-left
+                    div #{weeklyCoin1} #{settings.symbol} / #{weeklyBtc} BTC / $#{weeklyUsd}
+                .row.earnings
+                  .col-xs-2.col-md-offset-3.text-right
+                    div Monthly
+                  .col-xs-10.col-md-7.text-left
+                    div #{monthlyCoin1} #{settings.symbol} / #{monthlyBtc} BTC / $#{monthlyUsd}
+                .row.earnings
+                  .col-xs-2.col-md-offset-3.text-right
+                    div Yearly
+                  .col-xs-10.col-md-7.text-left
+                    div #{yearlyCoin1} #{settings.symbol} / #{yearlyBtc} BTC / $#{yearlyUsd}
+                if (calculatedBasedOnRealData)
+                  .row &nbsp;
+                  .row.earnings
+                    .col-md-offset-5.text-left
+                      em Calculations are based on real masternode payment data over the last 24h.
+                
+ 
+                .row.text-left
+                  .col-md-12
+                    h4(style=" color: #0077b3") Level2 Estimated earnings (Coin/BTC/USD)
+                .row.earnings
+                  .col-xs-2.col-md-offset-3.text-right
+                    div Daily
+                  .col-xs-10.col-md-7.text-left
+                    div #{dailyCoin2} #{settings.symbol} / #{dailyBtc2} BTC / $#{dailyUsd2}
+                .row.earnings
+                  .col-xs-2.col-md-offset-3.text-right
+                    div Weekly
+                  .col-xs-10.col-md-7.text-left
+                    div #{weeklyCoin2} #{settings.symbol} / #{weeklyBtc2} BTC / $#{weeklyUsd2}
+                .row.earnings
+                  .col-xs-2.col-md-offset-3.text-right
+                    div Monthly
+                  .col-xs-10.col-md-7.text-left
+                    div #{monthlyCoin2} #{settings.symbol} / #{monthlyBtc2} BTC / $#{monthlyUsd2}
+                .row.earnings
+                  .col-xs-2.col-md-offset-3.text-right
+                    div Yearly
+                  .col-xs-10.col-md-7.text-left
+                    div #{yearlyCoin2} #{settings.symbol} / #{yearlyBtc2} BTC / $#{yearlyUsd2}
+                if (calculatedBasedOnRealData)
+                  .row &nbsp;
+                  .row.earnings
+                    .col-md-offset-5.text-left
+                      em Calculations are based on real masternode payment data over the last 24h.
+
+
+                .row.text-left
+                  .col-md-12
+                    h4(style=" color: #00334d") Level3 Estimated earnings (Coin/BTC/USD)
+                .row.earnings
+                  .col-xs-2.col-md-offset-3.text-right
+                    div Daily
+                  .col-xs-10.col-md-7.text-left
+                    div #{dailyCoin3} #{settings.symbol} / #{dailyBtc3} BTC / $#{dailyUsd3}
+                .row.earnings
+                  .col-xs-2.col-md-offset-3.text-right
+                    div Weekly
+                  .col-xs-10.col-md-7.text-left
+                    div #{weeklyCoin3} #{settings.symbol} / #{weeklyBtc3} BTC / $#{weeklyUsd3}
+                .row.earnings
+                  .col-xs-2.col-md-offset-3.text-right
+                    div Monthly
+                  .col-xs-10.col-md-7.text-left
+                    div #{monthlyCoin3} #{settings.symbol} / #{monthlyBtc3} BTC / $#{monthlyUsd3}
+                .row.earnings
+                  .col-xs-2.col-md-offset-3.text-right
+                    div Yearly
+                  .col-xs-10.col-md-7.text-left
+                    div #{yearlyCoin3} #{settings.symbol} / #{yearlyBtc3} BTC / $#{yearlyUsd3}
+                if (calculatedBasedOnRealData)
+                  .row &nbsp;
+                  .row.earnings
+                    .col-md-offset-5.text-left
+                      em Calculations are based on real masternode payment data over the last 24h.
+
+
+
